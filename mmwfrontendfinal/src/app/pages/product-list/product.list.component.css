@@ -1,0 +1,10 @@
+.title-align {
+  text-align: center;
+}
+
+.gradient-bg {
+  height: 100vh;
+  background: url("src/assets/bg2.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+}

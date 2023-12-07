@@ -1,0 +1,44 @@
+<div class="gradient-bg">
+<h1 class="display-4 mb-5 title-align">My Cart</h1>
+
+<table class="table table-striped text-center">
+  <thead>
+  <tr>
+    <th scope="col"></th>
+    <th scope="col">Product</th>
+    <th scope="col">Price</th>
+    <th scope="col">Amount</th>
+    <th scope="col">Subtotal</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let cartProduct of cartProducts">
+    <th class="align-middle" scope="row">
+      <a routerLink="/product/{{cartProduct.productId}}"><img height="100px" src="{{cartProduct.productIcon}}" alt="{{cartProduct.productName}}"></a>
+    </th>
+    <td class="align-middle"><a
+      routerLink="/product/{{cartProduct.productId}}">{{cartProduct.productName}}</a></td>
+    <td class="align-middle">{{cartProduct.productPrice | currency}}</td>
+    <td class="align-middle">
+      <a (click)="removeFromAmount(cartProduct)"><i class="fa fa-minus"></i></a>
+      <input min="1" id="{{cartProduct.productId}}" [max]=cartProduct.productStock [(ngModel)]="cartProduct.count" (change)="onChange(cartProduct)" size="5" type="number" required name='count'>
+      <a (click)="addToAmount(cartProduct)"><i class="fa fa-plus"></i></a>
+    </td>
+    <td class="align-middle">{{cartProduct.productPrice * cartProduct.count|currency}}</td>
+    <td class="align-middle">
+      <a (click)="removeFromOrder(cartProduct)" routerLink="./">Remove</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div *ngIf="cartProducts?.length > 0; else empty">
+  <h5 style="display: inline;" class="right-align whitify">Total: {{total | currency}}</h5>
+  <button (click)="checkoutCurrentCart()" style="margin-left: 5%; float: right;" class="btn btn-primary btn-lg">Checkout</button>
+</div>
+<ng-template #empty>
+  <img src="assets/basket.png" class="basket-icon-adjust">
+  <h4 class="text-muted text-center">Your shopping cart is empty.</h4>
+</ng-template>
+</div>
+

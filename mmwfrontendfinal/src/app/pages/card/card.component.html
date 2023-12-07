@@ -1,0 +1,22 @@
+<div class="animbg d-flex flex-column justify-content-center w-100 h-100">
+<h1 class="display-4 mb-5 title-align whitify">{{title}}</h1>
+<div class="row card-deck text-center cards-pos">
+  <div *ngFor="let productInfo of page?.content" class="card-custom">
+    <div class="card mb-4 card-custom-2">
+      <img height="50%" class="card-img-top" src="{{productInfo.productIcon}}" alt="{{productInfo.productName}}">
+      <div class="card-body">
+        <h4 class="card-title blueify">{{productInfo.productName}}</h4>
+        <div class="title-align">
+          <p class="card-text blueify">{{productInfo.productDescription}}</p>
+          <p class="card-text blueify"><strong>Price: </strong>{{productInfo.productPrice | currency}}</p>
+          <p class="card-text blueify"><strong>Stock: </strong>{{productInfo.productStock}}</p>
+        </div>
+        <br>
+        <a routerLink="/product/{{productInfo.productId}}" *ngIf="productInfo.productStatus == 0; else offBlock" class="btn btn-primary btn-lg">Buy</a>
+        <ng-template #offBlock><a class="btn btn-secondary btn-lg disabled">Out of stock</a></ng-template>
+      </div>
+    </div>
+  </div>
+</div>
+<app-pagination [currentPage]="page"></app-pagination>
+</div>

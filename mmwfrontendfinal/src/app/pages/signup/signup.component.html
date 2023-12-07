@@ -1,0 +1,70 @@
+<div class="gradient-bg">
+<h1 class="display-4 mb-5 title-align">Sign Up</h1>
+<div class="registration-form">
+  <form #form="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Email address</label>
+      <input [(ngModel)]="user.email" type="email" class="form-control form-control-lg" id="email" name="email" placeholder="Enter email" email required autofocus  #email="ngModel">
+      <div *ngIf="email.invalid && (email.dirty ||email.touched)">
+        <div *ngIf="email.errors.required">
+          An e-mail address must be provided.
+        </div>
+        <div *ngIf="email.errors.email">
+          The provided e-mail address is incorrect.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Name</label>
+      <input [(ngModel)]="user.name" type="text" class="form-control form-control-lg" id="name" name="name" placeholder="Your name" required #name="ngModel">
+      <div  *ngIf="name.invalid && (name.dirty ||name.touched)">
+        <div *ngIf="name.errors.required">
+          A name must be provided.
+        </div>
+        <div *ngIf="name.errors.minlength">
+          The name must not be shorter than 3 letters.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input  [(ngModel)]="user.password" type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Password" minlength="3" required #password="ngModel">
+      <div  *ngIf="password.invalid && (password.dirty ||password.touched)">
+        <div *ngIf="password.errors.required">
+          An password must be provided.
+        </div>
+        <div *ngIf="password.errors.minlength">
+          The password must not be shorter than 3 characters.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Phone</label>
+      <input [(ngModel)]="user.phone" type="text" class="form-control form-control-lg" id="phone" name="phone" placeholder="Phone" required #phone="ngModel">
+      <div  *ngIf="phone.invalid && (phone.dirty ||phone.touched)">
+        <div *ngIf="phone.errors.required">
+          A phone number must be provided.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Address</label>
+      <input [(ngModel)]="user.address" type="text" class="form-control form-control-lg" id="address" name="address" placeholder="Address" required #address="ngModel">
+      <div  *ngIf="address.invalid && (address.dirty ||address.touched)">
+        <div *ngIf="address.errors.required">
+          An address must be provided.
+        </div>
+      </div>
+    </div>
+    <div class="form-group center">
+      <button type="submit" class="btn btn-lg btn-primary btn-block" [disabled]="!form.form.valid">
+        <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
+          <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
+          <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
+        </svg>
+        <span>Sign in</span>
+      </button>
+    </div>
+  </form>
+</div>
+</div>

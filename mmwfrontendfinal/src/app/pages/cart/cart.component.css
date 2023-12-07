@@ -1,0 +1,27 @@
+.title-align {
+  text-align: center;
+}
+
+.gradient-bg {
+  background: url("src/assets/bg2.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.right-align {
+  position: absolute;
+  right: 0;
+  margin-right: 10%;
+}
+
+.whitify {
+  color: #FFFFFF;
+}
+
+.basket-icon-adjust {
+  display: block;
+  width: 250px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}

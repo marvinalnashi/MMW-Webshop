@@ -1,0 +1,8 @@
+.title-align {
+  text-align: center;
+}
+
+.gradient-bg {
+  background-size: cover;
+  background: url("src/assets/bg2.jpg") fixed;
+}
